@@ -1,0 +1,13 @@
+[server]
+# gRPC server parameters
+host = "0.0.0.0"
+port = 50051
+# Limitting recognition queue
+queue_limit = 200
+
+[yolo_beers]
+cfg = "../data/todo.cfg"
+# Path to weights file
+weights = "../data/todo.weights"
+# Threshold should not be < 0.0
+threshold = 0.3
