@@ -29,6 +29,15 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	fmt.Println(conf)
+	if conf.YOLOBeers.Threshold <= 0.0 {
+		conf.YOLOBeers.Threshold = 0.2
+	}
+
+	netw, err := engine.NewYOLONetwork(conf.YOLOBeers.Cfg, conf.YOLOBeers.Weights, conf.YOLOBeers.Threshold)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	fmt.Println(netw)
 
 }
