@@ -11,3 +11,6 @@ curl -o data/beers.cfg https://opencv-tutorial.readthedocs.io/en/latest/_downloa
 
 # Download weights
 curl -o data/beers.weights https://pjreddie.com/media/files/yolov3.weights
+
+## Don't forget to add [names] to *.cfg file. It's needed for AlexeyAB's fork
+sed -i -e "\$anames = ../data/beers.names" data/beers.cfg

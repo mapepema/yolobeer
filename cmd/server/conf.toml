@@ -6,8 +6,8 @@ port = 50051
 queue_limit = 200
 
 [yolo_beers]
-cfg = "../data/todo.cfg"
+cfg = "../data/beers.cfg"
 # Path to weights file
-weights = "../data/todo.weights"
+weights = "../data/beers.weights"
 # Threshold should not be < 0.0
 threshold = 0.3

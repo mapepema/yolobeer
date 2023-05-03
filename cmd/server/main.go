@@ -4,10 +4,12 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"net"
 	"os"
 
 	engine "github.com/mapepema/yolobeer"
 	toml "github.com/pelletier/go-toml"
+	"google.golang.org/grpc"
 )
 
 var (
@@ -38,6 +40,16 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	fmt.Println(netw)
+	stdListener, err := net.Listen("tcp", fmt.Sprintf("%s:%d", conf.ServerConf.Host, conf.ServerConf.Port))
+	if err != nil {
+		log.Fatal(err)
+		return
+	}
 
+	if conf.ServerConf.QueueLimit < 1 {
+		conf.ServerConf.QueueLimit = 1
+	}
+
+	// Init servers
+	grpcInstance := grpc.NewServer()
 }
