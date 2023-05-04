@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package yolobeer;
+
+option go_package = "./;yolobeer";
+
+message ObjectInformation{
+    int64 timestamp = 1;
+    bytes image = 2;
+}
+
+message Response{
+    string message = 1;
+    string warning = 2;
+    string error = 3;
+}
+
+service ServiceYOLO{
+    rpc SendDetection(ObjectInformation) returns (Response){};
+}

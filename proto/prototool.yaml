@@ -1,0 +1,12 @@
+protoc:
+  version: 22.3
+lint:
+  group: uber2
+generate:
+  go_options:
+    import_path: github.com/mapepema/yolobeer
+  plugins:
+    - name: go
+      type: go
+      flags: plugins=grpc
+      output: ../

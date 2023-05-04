@@ -8,8 +8,12 @@ const (
 	gpuIndex = 0
 )
 
+type YOLONetwork struct {
+	Beers *darknet.YOLONetwork
+}
+
 // NewYOLONetwork return pointer to YOLONetwork
-func NewYOLONetwork(beersCfg, beersWeights string, beersThreshold float32) (*darknet.YOLONetwork, error) {
+func NewYOLONetwork(beersCfg, beersWeights string, beersThreshold float32) (*YOLONetwork, error) {
 	beers := darknet.YOLONetwork{
 		GPUDeviceIndex:           0,
 		WeightsFile:              beersWeights,
@@ -19,5 +23,5 @@ func NewYOLONetwork(beersCfg, beersWeights string, beersThreshold float32) (*dar
 	if err := beers.Init(); err != nil {
 		return nil, err
 	}
-	return &beers, nil
+	return &YOLONetwork{Beers: &beers}, nil
 }
